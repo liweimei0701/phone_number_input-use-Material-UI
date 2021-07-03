@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/material.css'
 
-function App() {
+const App = () => {
+  const [phone,setPhone] = React.useState("");
+  React.useEffect(()=>{
+    console.log("phone",phone);
+  },[phone]);
+
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div style={{width:"300px",margin:"200px auto"}}>
+      <PhoneInput
+        country='au'
+        specialLabel="Business Phone Number"
+        inputStyle={{width:400}}
+        value={phone}
+        onChange={(phone)=>setPhone(phone)}
+        // isValid={false}
+        defaultErrorMessage={"number is invalid"}
+      />
+      </div>
+    </>
   );
 }
 
